@@ -44,7 +44,7 @@ def play_rps(player):
             print('You won!')
         elif pl_num < comp_num:
             print('The Computer won.')
-        elif pl_num == com_num:
+        elif pl_num == comp_num:
             print('Draw')
 
 
