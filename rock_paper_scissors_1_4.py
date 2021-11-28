@@ -27,8 +27,25 @@ def get_comp():
     print('The computer played:', comp_str)
     return comp_num
 
+
+
+
+def comp_won(old_score):
+    print('The Computer won. Score -1')
+    old_score -= 1
+    return old_score
+
+def plr_won(old_score):
+    print('You won! Score +1')
+    old_score += 1
+    return old_score
+
+
+
+
+    
 # Comparing the score of the player with that of the computer's.
-def play_rps(player):
+def play_rps(player, score):
     pl_num = get_num(player)
     # If the user didn't choose an option, an error is printed.
     if pl_num == -1:
@@ -37,19 +54,22 @@ def play_rps(player):
         comp_num = get_comp()
         if (pl_num == 0 and comp_num == 2) or (comp_num == 0 and pl_num == 2):
             if comp_num == 0:
-                print('The Computer won.')
+                score = comp_won(score)
             else:
-                print('You won!')
+                score = plr_won(score)
         elif pl_num > comp_num:
-            print('You won!')
+            score = plr_won(score)
         elif pl_num < comp_num:
-            print('The Computer won.')
+            score = comp_won(score)
         elif pl_num == comp_num:
             print('Draw')
+    print('Your score is', score)
+    return score
 
 
 
 ######### MAIN #########################
+scr = 0
 while True:
     plr = input('{R}OCK, {P}APER, {S}CISSORS: ')
-    play_rps(plr)
+    scr = play_rps(plr, scr)
